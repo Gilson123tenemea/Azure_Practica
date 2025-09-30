@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Resultados de Cálculo</title>
+        <style>
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background-color: #f5f7fa;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                margin: 0;
+                padding: 20px;
+                box-sizing: border-box;
+            }
+            
+            .container {
+                background-color: white;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                padding: 30px;
+                width: 100%;
+                max-width: 700px;
+            }
+            
+            h1 {
+                color: #2c3e50;
+                text-align: center;
+                margin-top: 0;
+                margin-bottom: 25px;
+                font-size: 28px;
+                font-weight: 600;
+            }
+            
+            .resultados-grid {
+                width: 100%;
+                border-collapse: separate;
+                border-spacing: 0 8px;
+            }
+            
+            .resultados-grid td {
+                padding: 12px 15px;
+                vertical-align: middle;
+            }
+            
+            .resultados-grid tr:nth-child(odd) {
+                background-color: #f8f9fa;
+            }
+            
+            .resultados-grid tr:nth-child(even) {
+                background-color: #ffffff;
+            }
+            
+            .resultados-grid tr:hover {
+                background-color: #e9f7fe;
+            }
+            
+            .result-label {
+                font-weight: 600;
+                color: #34495e;
+                border-right: 1px solid #e0e0e0;
+                width: 40%;
+            }
+            
+            .result-value {
+                color: #2c3e50;
+                font-family: 'Courier New', monospace;
+                word-break: break-word;
+            }
+            
+            .info-text {
+                font-size: 13px;
+                color: #7f8c8d;
+                margin-top: 20px;
+                margin-bottom: 15px;
+                text-align: center;
+                display: block;
+            }
+            
+            .btn-back {
+                background-color: #3498db;
+                color: white;
+                border: none;
+                padding: 12px 25px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+                display: block;
+                margin: 25px auto 0;
+                transition: all 0.3s;
+                text-align: center;
+                text-decoration: none;
+            }
+            
+            .btn-back:hover {
+                background-color: #2980b9;
+                transform: translateY(-2px);
+            }
+            
+            .error-message {
+                color: #e74c3c;
+                text-align: center;
+                margin-bottom: 20px;
+                padding: 10px;
+                background-color: #fde8e8;
+                border-radius: 5px;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <div class="container">
+            <h1>Resultados de la Calculadora de IPs</h1>
+            
+            <h:form>
+                <h:messages globalOnly="true" styleClass="error-message" />
+                
+                <h:panelGrid columns="2" cellpadding="0" styleClass="resultados-grid"
+                    columnClasses="result-label,result-value">
+                    
+                    <h:outputLabel value="IP Binario:" />
+                    <h:outputText value="#{calculadoraBean.ipBinario}" />
+                    
+                    <h:outputLabel value="Red Decimal:" />
+                    <h:outputText value="#{calculadoraBean.red}" />
+                    
+                    <h:outputLabel value="Red Binario:" />
+                    <h:outputText value="#{calculadoraBean.redBinario}" />
+                    
+                    <h:outputLabel value="Broadcast Decimal:" />
+                    <h:outputText value="#{calculadoraBean.broadcast}" />
+                    
+                    <h:outputLabel value="Broadcast Binario:" />
+                    <h:outputText value="#{calculadoraBean.broadcastBinario}" />
+                    
+                    <h:outputLabel value="Primera IP Utilizable:" />
+                    <h:outputText value="#{calculadoraBean.primeraIpUtil}" />
+                    
+                    <h:outputLabel value="Última IP Utilizable:" />
+                    <h:outputText value="#{calculadoraBean.ultimaIpUtil}" />
+                    
+                    <h:outputLabel value="Máscara Subred Decimal:" />
+                    <h:outputText value="#{calculadoraBean.mascaraSubred}" />
+                    
+                    <h:outputLabel value="Máscara Red Binario:" />
+                    <h:outputText value="#{calculadoraBean.mascaraRedBinario}" />
+                    
+                    <h:outputLabel value="Máscara Red Decimal:" />
+                    <h:outputText value="#{calculadoraBean.mascaraRedDecimal}" />
+                    
+                    <h:outputLabel value="Hosts por Subred:" />
+                    <h:outputText value="#{calculadoraBean.hostsPorSubred}" />
+                    
+                    <h:outputLabel value="Salto de Red:" />
+                    <h:outputText value="#{calculadoraBean.saltoRed}" />
+                    
+                    <h:outputLabel value="Clase:" />
+                    <h:outputText value="#{calculadoraBean.clase}" />
+                    
+                </h:panelGrid>
+                
+                <h:outputText 
+                    value="* Los valores mostrados corresponden al cálculo basado en la IP y máscara ingresadas."
+                    styleClass="info-text" />
+                
+                <h:commandButton value="Volver" action="index?faces-redirect=true" styleClass="btn-back" />
+            </h:form>
+        </div>
+    </h:body>
+</html>

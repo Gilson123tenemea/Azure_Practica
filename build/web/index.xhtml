@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Calculadora de IPs</title>
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                background-color: #f5f5f5;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                margin: 0;
+                padding: 20px;
+                box-sizing: border-box;
+            }
+            
+            .container {
+                background-color: white;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                padding: 30px;
+                width: 100%;
+                max-width: 500px;
+            }
+            
+            h1 {
+                color: #2c3e50;
+                text-align: center;
+                margin-top: 0;
+                margin-bottom: 25px;
+                font-size: 24px;
+            }
+            
+            .panel-grid {
+                width: 100%;
+            }
+            
+            .input-field {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                box-sizing: border-box;
+                margin-bottom: 5px;
+            }
+            
+            .input-field:focus {
+                border-color: #3498db;
+                outline: none;
+            }
+            
+            .btn-calculate {
+                background-color: #3498db;
+                color: white;
+                border: none;
+                padding: 12px 20px;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 16px;
+                width: 100%;
+                margin-top: 10px;
+                transition: background-color 0.3s;
+            }
+            
+            .btn-calculate:hover {
+                background-color: #2980b9;
+            }
+            
+            .error-message {
+                color: #e74c3c;
+                font-size: 12px;
+                margin-top: -5px;
+                margin-bottom: 10px;
+            }
+            
+            .output-label {
+                font-weight: bold;
+                color: #2c3e50;
+                padding-right: 15px;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <div class="container">
+            <h1>Calculadora de IPs</h1>
+            <h:form id="ipForm">
+                <h:panelGrid columns="2" cellpadding="5" styleClass="panel-grid" columnClasses="output-label,">
+                    <h:outputLabel value="Dirección IP:" for="ip" />
+                    <h:inputText id="ip" value="#{calculadoraBean.ipCompleta}" required="true"
+                                 styleClass="input-field"
+                                 validator="#{calculadoraBean.validarIP}">
+                    </h:inputText>
+                    <h:panelGroup />
+                    <h:message for="ip" styleClass="error-message" />
+
+                    <h:outputLabel value="Prefijo de Red:" for="prefijo" />
+                    <h:inputText id="prefijo" value="#{calculadoraBean.prefijo}" 
+                                 required="true" styleClass="input-field" />
+
+                    <h:outputLabel value="Cantidad de Subredes:" for="subredes" />
+                    <h:inputText id="subredes" value="#{calculadoraBean.cantSubRedes}" 
+                                 required="true" styleClass="input-field" />
+
+                    <h:panelGroup />
+                    <h:commandButton value="Calcular" action="#{calculadoraBean.calcular}" 
+                                   styleClass="btn-calculate" />
+                </h:panelGrid>
+            </h:form>
+        </div>
+    </h:body>
+</html>
