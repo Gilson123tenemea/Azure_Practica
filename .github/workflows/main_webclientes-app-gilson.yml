@@ -32,5 +32,6 @@ jobs:
         with:
           app-name: 'WEBClientes-APP-Gilson'
           slot-name: 'Production'
-          package: './dist/CalculadoraIPWeb.war'
+          package: './dist/ROOT.war'
+
 
